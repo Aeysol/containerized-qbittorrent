@@ -1,0 +1,2 @@
+#!/command/with-contenv bash
+s6-notifyoncheck -d -n 12 -c "nc -z 127.0.0.1 2222" s6-setuidgid qbittorrent tcpserver -HRDl0 0.0.0.0 2222 /usr/sbin/tinysshd -x sftp=/usr/lib/ssh/sftp-server -- "${HOME}/.tinyssh"

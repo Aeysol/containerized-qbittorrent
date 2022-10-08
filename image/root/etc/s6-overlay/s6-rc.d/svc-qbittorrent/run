@@ -1,0 +1,3 @@
+#!/command/with-contenv bash
+export HOME="${QBITTORRENT_FOLDER}"
+s6-notifyoncheck -d -n 12 -c "nc -z 127.0.0.1 8080" s6-setuidgid qbittorrent /usr/local/bin/qbittorrent-nox

@@ -1,0 +1,15 @@
+#!/command/with-contenv bash
+if ! [ -d "${QBITTORRENT_FOLDER}/downloads" ]; then
+	mkdir -p "${QBITTORRENT_FOLDER}/downloads"
+fi
+
+if ! [ -d "${QBITTORRENT_FOLDER}/.config/qBittorrent/" ]; then
+	mkdir -p "${QBITTORRENT_FOLDER}/.config/qBittorrent"
+fi
+
+if ! [ -f "${QBITTORRENT_FOLDER}/.config/qBittorrent/qBittorrent.conf" ]; then
+	envsubst < /defaults/qBittorrent.conf > "${QBITTORRENT_FOLDER}/.config/qBittorrent/qBittorrent.conf"
+fi
+
+# Fix permissions
+chown -R qbittorrent:qbittorrent "${QBITTORRENT_FOLDER}"
